@@ -1,0 +1,28 @@
+DROP DATABASE IF EXISTS tracking_db;
+
+CREATE DATABASE tracking_db;
+
+USE tracking_db;
+
+CREATE TABLE department (
+  id INTEGER AUTO_INCREMENT NOT NULL,
+  name VARCHAR(100) NOT NULL,
+  PRIMARY KEY (id)
+);
+
+CREATE TABLE role (
+  id INTEGER AUTO_INCREMENT NOT NULL,
+  title VARCHAR(100) NOT NULL,
+  salary DECIMAL,
+  department_id INTEGER NOT NULL
+  PRIMARY KEY (id)
+);
+
+CREATE TABLE employee (
+  id INTEGER AUTO_INCREMENT NOT NULL,
+  first_name VARCHAR(100) NOT NULL,
+  last_name VARCHAR(100) NOT NULL,
+  role_id INTEGER NOT NULL,
+  manager_id INTEGER
+  PRIMARY KEY (id)
+);
