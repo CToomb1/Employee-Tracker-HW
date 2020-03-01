@@ -8,8 +8,8 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js",
-    "watch": "nodemon server.js"
+    "start": "node app.js",
+    "watch": "nodemon app.js"
   },
   "repository": {
     "type": "git",
@@ -23,9 +23,14 @@
   },
   "homepage": "https://github.com/CToomb1/Employee-Tracker-HW#readme",
   "dependencies": {
+    "connection": "^1.1.0",
+    "consola": "^2.11.3",
+    "console.table": "^0.10.0",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-handlebars": "^3.1.0",
+    "inquire": "^0.4.8",
+    "inquirer": "^7.0.5",
     "mysql": "^2.18.1"
   }
 }

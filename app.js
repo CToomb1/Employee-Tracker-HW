@@ -1,26 +1,37 @@
-const express = require('express');
-const expressHandlebars = require('express-handlebars');
+const inquirer = require('inquirer');
+require('console.table');
 
-const app = express();
-const PORT = process.env.PORT || 3001;
+const connection = require('./config/connection').default;
 
-const connection = require('./config/connection');
+const { getAllDepartments, getAllRoles, getAllEmployees} = require('./lib/db-employees');
 
-const routes = require('./routes');
+const { startQuestions, createDepartmentQuestions, createRoleQuestions, createEmployeeQuestions } = require('./lib/prompts');
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-app.use(express.static('public'));
+const startTracker = async () => {
+  const { initialAction } = await inquirer.prompt(startQuestions);
+  if (initialAction === 'Add a department') {
+    createDepartmentQuestions();
+  } else if (initialAction === 'Add a role') {
+    createRoleQuestions();
+  } else if (initialAction === 'Add an employee'){
+    createEmployeeQuestions();
+  } else {
+    connection.end();
+  }
+};
 
-app.engine('handlebars', expressHandlebars({ defaultLayout: 'main' }));
-app.set('view engine', 'handlebars');
+const createDepartment = async () => {
+  const { department_name, department_id } = await inquirer.prompt
+  (createDepartmentQuestions);
 
-app.use(routes);
+  const createDepartment = await createDepartmentQuestions({ department_name, department_id});
+
+  console.log(createDepartmentRes);
+  return startAuction();
+};
 
 connection.connect(err => {
-  if (err) {
-    throw new Error(err);
-  }
-
-  app.listen(PORT, () => console.log(`Now listening on port ${PORT}`));
+  if (err) throw err;
+  console.log('Connected to DB');
+  startTracker();
 });
