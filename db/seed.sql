@@ -1,4 +1,4 @@
-USE tracking_db;
+USE seed_db;
 
 INSERT INTO department
   (name)

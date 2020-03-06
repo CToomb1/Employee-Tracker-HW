@@ -1,8 +1,8 @@
-DROP DATABASE IF EXISTS tracking_db;
+DROP DATABASE IF EXISTS seed_db;
 
-CREATE DATABASE tracking_db;
+CREATE DATABASE seed_db;
 
-USE tracking_db;
+USE seed_db;
 
 CREATE TABLE department (
   id INTEGER AUTO_INCREMENT NOT NULL,
