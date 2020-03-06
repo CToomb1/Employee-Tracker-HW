@@ -1,29 +1,28 @@
-DROP DATABASE IF EXISTS holidayInn_db;
+DROP DATABASE IF EXISTS tracking_db;
 
-CREATE DATABASE holidayInn_db;
+CREATE DATABASE tracking_db;
 
-USE holidayInn_db;
+USE tracking_db;
 
-CREATE TABLE employees (
+CREATE TABLE department (
   id INTEGER AUTO_INCREMENT NOT NULL,
-  first_name VARCHAR(30) NOT NULL,
-  last_name VARCHAR(30) NOT NULL,
-  role_id INTEGER,
-  manager_id INTEGER,
+  name VARCHAR(100) NOT NULL,
   PRIMARY KEY (id)
 );
 
 CREATE TABLE role (
   id INTEGER AUTO_INCREMENT NOT NULL,
-  title VARCHAR(30) NOT NULL,
-  salary DECIMAL NOT NULL,
-  department_id INTEGER,
-  PRIMARY KEY (id),
+  title VARCHAR(100) NOT NULL,
+  salary DECIMAL,
+  department_id INTEGER NOT NULL
+  PRIMARY KEY (id)
 );
 
-CREATE TABLE department (
+CREATE TABLE employee (
   id INTEGER AUTO_INCREMENT NOT NULL,
-  name VARCHAR(30),
-  department_id INTEGER,
+  first_name VARCHAR(100) NOT NULL,
+  last_name VARCHAR(100) NOT NULL,
+  role_id INTEGER NOT NULL,
+  manager_id INTEGER
   PRIMARY KEY (id)
 );
